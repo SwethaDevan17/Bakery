@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirm Your Order – Sweet Delights</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .cart-summary {
+      padding: 20px;
+      background: #fff0f6;
+      border: 2px dashed #ffa7c4;
+      border-radius: 14px;
+      margin-top: 20px;
+    }
+
+    .cart-summary ul {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+
+    .input-name {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 10px;
+      border: 1px solid #ffb3c1;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .confirm-btn {
+      background: #ff6f91;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Confirm Your Order</h1>
+    <p>Enter your name and review your delicious choices 🍪</p>
+  </header>
+
+  <div class="container">
+    <input type="text" id="customerName" class="input-name" placeholder="Enter your name..." required>
+
+    <div class="cart-summary">
+      <strong>🧁 Your Order:</strong>
+      <ul id="finalCartList"></ul>
+      <p><strong>Total: ₹<span id="finalCartTotal">0</span></strong></p>
+    </div>
+
+    <button class="confirm-btn" onclick="confirmOrder()">Confirm Order</button>
+  </div>
+
+  <script>
+    const productData = {
+      "chocolate croissants": { name: "Chocolate Croissants", price: 60 },
+      "birthday cake": { name: "Birthday Cake", price: 500 },
+      "cookies": { name: "Cookies", price: 30 },
+      "fruit tart": { name: "Fruit Tart", price: 120 },
+      "cupcake": { name: "Cupcake", price: 40 }
+    };
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+    function renderCart() {
+      const list = document.getElementById('finalCartList');
+      const totalEl = document.getElementById('finalCartTotal');
+      let total = 0;
+      list.innerHTML = '';
+
+      Object.entries(cart).forEach(([key, qty]) => {
+        if (qty > 0 && productData[key]) {
+          const product = productData[key];
+          const price = product.price * qty;
+          total += price;
+
+          const li = document.createElement('li');
+          li.textContent = `${product.name} × ${qty} = ₹${price}`;
+          list.appendChild(li);
+        }
+      });
+
+      totalEl.innerText = total;
+    }
+
+    async function confirmOrder() {
+      const name = document.getElementById('customerName').value.trim();
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      const orders = Object.entries(cart)
+        .filter(([key, qty]) => qty > 0)
+        .map(([key, qty]) => ({
+          customer: name,
+          item: key,
+          quantity: qty
+        }));
+
+      for (const order of orders) {
+        await fetch('/place_order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(order)
+        });
+      }
+
+      localStorage.removeItem('cart');
+      window.location.href = "/thankyou?name=" + encodeURIComponent(name);
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>

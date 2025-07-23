@@ -1,0 +1,94 @@
+/* Global Reset and Base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff7fb;
+    color: #4b2e2e;
+}
+
+header {
+    background: linear-gradient(135deg, #ffe0f0, #e0f7ff);
+    text-align: center;
+    padding: 25px 10px;
+    border-bottom: 3px dashed #ff9aa2;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #d46a6a;
+}
+
+header p {
+    font-style: italic;
+    color: #7e4d4d;
+    font-size: 1.1em;
+}
+
+/* Container Layout */
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Menu Cards */
+.card {
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+/* Cart Summary */
+#cart {
+    padding: 20px;
+    background-color: #ffe8f3;
+    border: 2px dashed #ffa7c4;
+    border-radius: 14px;
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.1);
+}
+
+#cart ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+#cart ul li {
+    margin-bottom: 8px;
+}
+
+/* Buttons */
+button.place-order {
+    background-color: #ff6f91;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 14px;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 111, 145, 0.2);
+    transition: background 0.3s ease;
+}
+
+button.place-order:hover {
+    background-color: #ff3f72;
+}
+
+.qty-controls button {
+    background-color: #ffc0cb;
+    color: #5a2e2e;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.qty-controls button:hover {
+    background-color: #ff99aa;
+}

@@ -1,0 +1,42 @@
+[
+    {
+        "customer": "Swetha",
+        "item": "Chocolate Croissants",
+        "quantity": "2"
+    },
+    {
+        "customer": "Swetha",
+        "item": "chocolate croissants",
+        "quantity": "2"
+    },
+    {
+        "customer": "Swetha",
+        "item": "cupcake",
+        "quantity": "2"
+    },
+    {
+        "customer": "Swetha",
+        "item": "cookies",
+        "quantity": "1"
+    },
+    {
+        "customer": "Swetha",
+        "item": "cupcake",
+        "quantity": 1
+    },
+    {
+        "customer": "Swetha D",
+        "item": "birthday cake",
+        "quantity": 1
+    },
+    {
+        "customer": "Swetha D",
+        "item": "cupcake",
+        "quantity": 1
+    },
+    {
+        "customer": "Swetha D",
+        "item": "cupcake",
+        "quantity": 1
+    }
+]

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You – Sweet Delights</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .thank-you {
+      text-align: center;
+      padding: 50px;
+    }
+
+    .thank-you h1 {
+      font-size: 2.5em;
+      color: #ff6f91;
+    }
+
+    .thank-you p {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .home-btn {
+      margin-top: 30px;
+      background: #ff6f91;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thank-you">
+    <h1>Thank You, {{ name }}! 🎉</h1>
+    <p>Your order has been successfully placed. We’ll get baking right away! 🍰</p>
+    <a href="/" class="home-btn">Back to Menu</a>
+  </div>
+
+</body>
+</html>
