@@ -27,5 +27,5 @@ A simple yet elegant digital menu web app for a bakery, built using **Flask (Pyt
 
 ---
 
-##  Folder Structure
+
 
